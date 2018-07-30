@@ -24,13 +24,18 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^5.2.0",
-    "ganache-cli": "^6.1.6",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7",
-    "prettier-eslint": "^8.8.2",
-    "truffle": "^4.1.13"
+    "prettier-eslint": "^8.8.2"
   },
   "dependencies": {
-    "zeppelin-solidity": "^1.10.0"
+    "eth-connect": "^0.3.0",
+    "ethereumjs-util": "^5.2.0",
+    "ethereumjs-wallet": "^0.6.1",
+    "ganache-cli": "^6.1.6",
+    "keccakjs": "^0.2.1",
+    "truffle": "^4.1.13",
+    "truffle-hdwallet-provider": "0.0.5",
+    "zeppelin-solidity": "^1.11.0"
   }
 }

@@ -3,7 +3,7 @@ require('chai').should()
 
 contract('Rainbow token', accounts => {
   const [creator, user, anotherUser] = accounts
-
+  console.log(creator, accounts)
   const creationParams = {
     gas: 7e6,
     gasPrice: 1e9,
@@ -13,6 +13,15 @@ contract('Rainbow token', accounts => {
   let rainbow = null
   const _name = 'RainbowToken'
   const _symbol = 'RAINBOW'
+  const rainbowMapping = [
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'indigo',
+    'violet'
+  ]
 
   beforeEach(async () => {
     rainbow = await RainbowToken.new(_name, _symbol, creationParams)
@@ -40,9 +49,16 @@ contract('Rainbow token', accounts => {
   })
 
   describe('color', () => {
-    it('should returns color name', async () => {
-      const color = await rainbow.getColor(0)
-      color.should.be.equal('Red')
+    it('should get color by colorId', async () => {
+      const color = await rainbow.getColor(1)
+      color.should.be.equal(rainbowMapping[0])
+    })
+    it('should generate rainbow', async () => {
+      const totalSupply = await rainbow.totalSupply()
+      for (let i = 0; i < totalSupply; i++) {
+        const color = await rainbow.getColor(i + 1)
+        color.should.be.equal(rainbowMapping[i])
+      }
     })
   })
 })

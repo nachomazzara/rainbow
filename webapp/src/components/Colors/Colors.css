@@ -1,0 +1,59 @@
+.rainbow{
+  width: 100vw;
+  height: 100vh;
+}
+
+.rainbow div{
+  height: calc(100vh / 7);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rainbow div p{
+  display: none;
+  font-size: 24px;
+}
+
+.rainbow .red{
+  background: red;
+}
+
+.rainbow .orange{
+  background: orange;
+}
+
+.rainbow .yellow{
+  background: yellow;
+}
+
+.rainbow .green{
+  background: green;
+}
+
+.rainbow .blue{
+  background: blue;
+}
+
+.rainbow .indigo{
+  background: indigo;
+}
+
+.rainbow .violet{
+  background: violet;
+}
+
+.go {
+  border: 2px solid black;
+  position: absolute;
+  font-size: 18px;
+  font-family: fantasy;
+  top: 10px;
+  right: 10px;
+  background: #bda1bd;
+  padding-top: 7px;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
