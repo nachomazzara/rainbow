@@ -3,7 +3,6 @@ require('chai').should()
 
 contract('Rainbow token', accounts => {
   const [creator, user, anotherUser] = accounts
-  console.log(creator, accounts)
   const creationParams = {
     gas: 7e6,
     gasPrice: 1e9,

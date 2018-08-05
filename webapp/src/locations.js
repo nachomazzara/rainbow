@@ -1,4 +1,5 @@
 export const locations = {
   root: () => '/',
-  all: () => '/all'
+  rainbow: () => '/rainbow',
+  new: () => '/new'
 }

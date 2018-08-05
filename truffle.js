@@ -21,14 +21,14 @@ module.exports = {
       port: 18545,
       gas: 100000000,
       network_id: '*' // Match any network id
+    },
+    ropsten: {
+      provider: new HDWalletProvider(
+        mnemonic,
+        'https://ropsten.infura.io/' + infura_apikey
+      ),
+      network_id: 3,
+      gas: 4698712
     }
-    // ropsten: {
-    //   provider: new HDWalletProvider(
-    //     mnemonic,
-    //     'https://ropsten.infura.io/' + infura_apikey
-    //   ),
-    //   network_id: 3,
-    //   gas: 4698712
-    // }
   }
 }

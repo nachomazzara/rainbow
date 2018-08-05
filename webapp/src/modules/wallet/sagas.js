@@ -22,6 +22,8 @@ function* handleConnectWallet() {
       window.web3.currentProvider
     ) {
       web3 = new Web3(window.web3.currentProvider)
+    } else {
+      web3 = new Web3('https://ropsten.infura.io')
     }
 
     const rainbow = new web3.eth.Contract(
@@ -31,15 +33,14 @@ function* handleConnectWallet() {
 
     const address = yield call(() => web3.eth.getAccounts())
 
-    if (!address.length) {
-      throw new Error('Unlock Metamask')
-    }
-
     yield put(
-      connectWalletSuccess({ web3, contracts: { rainbow } }, address[0])
+      connectWalletSuccess(
+        { web3, contracts: { rainbow } },
+        address.length ? address[0] : ''
+      )
     )
     yield put(fetchColorsRequest())
   } catch (e) {
-    yield put(connectWalletFailure(e.message))
+    yield put(connectWalletFailure('wallet    ' + e.message))
   }
 }

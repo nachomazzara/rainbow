@@ -50,7 +50,7 @@ contract RainbowToken is ERC721Token, Ownable {
     /**
     * @dev Mint new colors
     * @param _color valid color name or hexa
-    * @param _uri url to a json schema with the format { name: '', description: '', image: '' }
+    * @param _uri url to a json schema with the format { name: '', description: ''}
     * @return An uint representing the new token
     */
     function addColor(string _color, string _uri) public returns (uint) {

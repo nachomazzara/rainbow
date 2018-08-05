@@ -1,0 +1,51 @@
+.new-color{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #f1f1f1 , #a4d2d6);
+
+}
+
+.new-color div{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px -1px #521313;
+}
+
+.new-color div input{
+  min-width: 400px;
+  padding: 15px;
+  font-size: 18px;
+  margin: 7px 0;
+  border-radius: 3px;
+  border: none;
+  border-bottom: 1px solid #80b7db;
+  background: transparent;
+  outline: none;
+}
+
+.new-color div button{
+  min-width: 240px;
+  margin: 20px auto 0;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  background: linear-gradient(to right, #f1f1f1 , #a4d2d6);
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #3b3b3b;
+  cursor: pointer;
+}
+
+@media(max-width: 520px) {
+  .new-color div input{
+    min-width: 200px;
+    font-size: 16px;
+  }
+}

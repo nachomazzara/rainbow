@@ -1,9 +1,9 @@
-.rainbow{
+.rainbow {
   width: 100vw;
   height: 100vh;
 }
 
-.rainbow div{
+.rainbow div {
   height: calc(100vh / 7);
   width: 100%;
   display: flex;
@@ -11,49 +11,127 @@
   justify-content: center;
 }
 
-.rainbow div p{
+.rainbow div p {
   display: none;
   font-size: 24px;
 }
 
-.rainbow .red{
+.rainbow .red {
   background: red;
 }
 
-.rainbow .orange{
+.rainbow .orange {
   background: orange;
 }
 
-.rainbow .yellow{
+.rainbow .yellow {
   background: yellow;
 }
 
-.rainbow .green{
+.rainbow .green {
   background: green;
 }
 
-.rainbow .blue{
+.rainbow .blue {
   background: blue;
 }
 
-.rainbow .indigo{
+.rainbow .indigo {
   background: indigo;
 }
 
-.rainbow .violet{
+.rainbow .violet {
   background: violet;
 }
 
-.go {
-  border: 2px solid black;
+.all-colors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.all-colors div {
+  width: 20%;
+  padding-top: 20%;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.all-colors div p {
+  text-align: right;
+  background: #00000040;
+  padding: 5px;
   position: absolute;
-  font-size: 18px;
-  font-family: fantasy;
-  top: 10px;
-  right: 10px;
-  background: #bda1bd;
-  padding-top: 7px;
-  border-radius: 3px;
+  width: 100%;
+  bottom: -16px;
+  right: 0;
+  color: white;
+}
+
+.all-colors div > p {
+  transition: .4s linear;
+}
+
+.all-colors div > p.hidden {
+  opacity: 0;
+  transition: none;
+}
+
+.all-colors div:hover > p.color, .all-colors div:active > p.color  {
+  background: transparent;
+  color: transparent;
+}
+
+.all-colors div:hover > p.hidden, .all-colors div:active > p.hidden{
+  opacity: 1;
+  height: 100%;
+  bottom: 0;
+  top: 0;
+  margin: 0;
+  text-align: left;
+  left: 0;
+  padding: 10px;
+}
+
+.add-color {
+  background: linear-gradient(to right, #f70808 , #00ebff);
   cursor: pointer;
   outline: none;
+  transition: 1s linear;
+}
+
+.add-color:hover, .add-color:active {
+  background: linear-gradient(to right, #00ebff , #f70808);
+}
+
+.all-colors .add-color p{
+  color: white;
+  font-size: 26px;
+  text-align: center;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+@media(max-width: 920px) {
+  .all-colors div {
+    width: 25%;
+    padding-top: 25%;
+  }
+}
+
+@media(max-width: 520px) {
+  .all-colors div{
+    width: 50%;
+    padding-top: 50%;
+  }
 }
