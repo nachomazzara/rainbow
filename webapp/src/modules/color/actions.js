@@ -20,8 +20,8 @@ export function createColorRequest(color, metadata) {
   return action(CREATE_COLOR.request, { color, metadata })
 }
 
-export function createColorSuccess(txLink) {
-  return action(CREATE_COLOR.success, { txLink })
+export function createColorSuccess(txLink, color) {
+  return action(CREATE_COLOR.success, { txLink, color })
 }
 
 export function createColorFailure(error) {

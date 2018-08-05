@@ -55,6 +55,7 @@
   position: relative;
   overflow: hidden;
   outline: none;
+  background: grey;
 }
 
 .all-colors div p {
@@ -77,12 +78,12 @@
   transition: none;
 }
 
-.all-colors div:hover > p.color, .all-colors div:active > p.color  {
+.all-colors div:hover > p.color, .all-colors div:active > p.color, .all-colors div:focus > p.color  {
   background: transparent;
   color: transparent;
 }
 
-.all-colors div:hover > p.hidden, .all-colors div:active > p.hidden{
+.all-colors div:hover > p.hidden, .all-colors div:active > p.hidden, .all-colors div:focus > p.hidden{
   opacity: 1;
   height: 100%;
   bottom: 0;
@@ -93,14 +94,14 @@
   padding: 10px;
 }
 
-.add-color {
+.all-colors div.add-color {
   background: linear-gradient(to right, #f70808 , #00ebff);
   cursor: pointer;
   outline: none;
   transition: 1s linear;
 }
 
-.add-color:hover, .add-color:active {
+.all-colors div.add-color:hover, .all-colors div.add-color:active, .all-colors div.add-color:focus {
   background: linear-gradient(to right, #00ebff , #f70808);
 }
 

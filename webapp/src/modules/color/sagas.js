@@ -1,4 +1,5 @@
 import { select, takeLatest, call, put, all } from 'redux-saga/effects'
+import { push } from 'react-router-redux'
 
 import {
   FETCH_COLORS,
@@ -9,6 +10,8 @@ import {
   createColorSuccess
 } from './actions'
 import { getContracts, getAddress } from '../wallet/selectors'
+import { isInvalidColor, normalizeColor } from './utils'
+import { locations } from '../../locations'
 
 export default function* colorSagas() {
   yield takeLatest(FETCH_COLORS.request, handleFetchColors)
@@ -26,12 +29,16 @@ function* handleFetchColors() {
         call(() => rainbow.methods.getColor(i).call()),
         call(() => rainbow.methods.tokenURI(i).call())
       ])
+      const normalizedColor = normalizeColor(color)
+      if (isInvalidColor(normalizedColor)) {
+        continue
+      }
       if (metadata.indexOf('https://jsonblob.com/api/jsonBlob/') !== -1) {
         data = yield call(() =>
           fetch(metadata).then(response => response.json())
         )
       }
-      colors.push({ color, data })
+      colors.push({ color: normalizedColor, data })
     }
     yield put(fetchColorsSuccess(colors))
   } catch (e) {
@@ -67,9 +74,11 @@ function* createColor({ payload }) {
 
     yield put(
       createColorSuccess(
-        `https://ropsten.etherscan.io/tx/${tx.transactionHash}`
+        `https://ropsten.etherscan.io/tx/${tx.transactionHash}`,
+        { color, data: metadata }
       )
     )
+    yield put(push(locations.root()))
   } catch (e) {
     yield put(createColorFailure(e.message))
   }

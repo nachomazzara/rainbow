@@ -11,6 +11,7 @@ export default class NewColor extends React.PureComponent {
   }
 
   static props = {
+    isLoading: PropTypes.bool.isRequired,
     onCreateColor: PropTypes.func.isRequired
   }
 
@@ -20,7 +21,21 @@ export default class NewColor extends React.PureComponent {
     onCreateColor(color, { name, description })
   }
 
+  renderLoading = () => (
+    <div className="pending-tx">
+      <span>{'Transaction pending'}</span>
+      <div className="lds-ellipsis">
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+  )
+
   render() {
+    const { isLoading } = this.props
+
     return (
       <div className="new-color">
         <div>
@@ -39,7 +54,11 @@ export default class NewColor extends React.PureComponent {
             placeholder="Description"
             onChange={e => this.setState({ description: e.target.value })}
           />
-          <button onClick={this.createColor}>{'Create Color'}</button>
+          {!isLoading ? (
+            <button onClick={this.createColor}>{'Create Color'}</button>
+          ) : (
+            this.renderLoading()
+          )}
         </div>
       </div>
     )

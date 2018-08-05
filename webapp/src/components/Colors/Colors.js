@@ -20,7 +20,11 @@ export default class Colors extends React.PureComponent {
       <div className={colors.length > 7 ? 'all-colors' : 'rainbow'}>
         {colors.map(({ color, data }, index) => (
           <React.Fragment key={index}>
-            <div style={{ background: color }}>
+            <div
+              style={{
+                background: color
+              }}
+            >
               {data.name && (
                 <p className="hidden">{`${data.name} ${data.name}`}</p>
               )}

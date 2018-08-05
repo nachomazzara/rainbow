@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { FETCH_COLORS } from './actions'
+import { FETCH_COLORS, CREATE_COLOR } from './actions'
 
 const DATA_INITIAL_STATE = {
   colors: []
@@ -14,6 +14,11 @@ function data(state = DATA_INITIAL_STATE, action) {
         colors: payload.colors
       }
     }
+    case CREATE_COLOR.success: {
+      return {
+        colors: [...state.colors, payload.color]
+      }
+    }
     default:
       return state
   }
@@ -21,11 +26,14 @@ function data(state = DATA_INITIAL_STATE, action) {
 
 function loading(state = false, action) {
   switch (action.type) {
-    case FETCH_COLORS.request: {
+    case FETCH_COLORS.request:
+    case CREATE_COLOR.request: {
       return true
     }
     case FETCH_COLORS.success:
-    case FETCH_COLORS.failure: {
+    case FETCH_COLORS.failure:
+    case CREATE_COLOR.success:
+    case CREATE_COLOR.failure: {
       return false
     }
     default:
