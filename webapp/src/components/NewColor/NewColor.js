@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { HuePicker } from 'react-color'
 
 import './NewColor.css'
 
@@ -13,6 +14,10 @@ export default class NewColor extends React.PureComponent {
   static props = {
     isLoading: PropTypes.bool.isRequired,
     onCreateColor: PropTypes.func.isRequired
+  }
+
+  handleChangeComplete = color => {
+    this.setState({ color: color.hex })
   }
 
   createColor = () => {
@@ -35,15 +40,17 @@ export default class NewColor extends React.PureComponent {
 
   render() {
     const { isLoading } = this.props
+    const { color } = this.state
 
     return (
       <div className="new-color">
-        <div>
-          <input
-            type="text"
-            placeholder="#ffffff or white"
-            onChange={e => this.setState({ color: e.target.value })}
+        <div className="formWrapper">
+          <HuePicker
+            color={color}
+            width="100%"
+            onChangeComplete={this.handleChangeComplete}
           />
+          <p className="selected-color" style={{ background: color }} />
           <input
             type="text"
             placeholder="Name"

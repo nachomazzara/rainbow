@@ -25,19 +25,19 @@ function* handleFetchColors() {
     const colors = []
     for (let i = 0; i < totalSupply; i++) {
       let data = {}
-      const [color, metadata] = yield all([
-        call(() => rainbow.methods.getColor(i).call()),
-        call(() => rainbow.methods.tokenURI(i).call())
+      const [color /*, metadata */] = yield all([
+        call(() => rainbow.methods.getColor(i).call())
+        // call(() => rainbow.methods.tokenURI(i).call())
       ])
       const normalizedColor = normalizeColor(color)
       if (isInvalidColor(normalizedColor)) {
         continue
       }
-      if (metadata.indexOf('https://jsonblob.com/api/jsonBlob/') !== -1) {
-        data = yield call(() =>
-          fetch(metadata).then(response => response.json())
-        )
-      }
+      // if (metadata.indexOf('https://jsonblob.com/api/jsonBlob/') !== -1) {
+      //   data = yield call(() =>
+      //     fetch(metadata).then(response => response.json())
+      //   )
+      // }
       colors.push({ color: normalizedColor, data })
     }
     yield put(fetchColorsSuccess(colors))

@@ -7,7 +7,7 @@
 
 }
 
-.new-color div{
+.new-color div.formWrapper{
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -17,7 +17,15 @@
   box-shadow: 0px 0px 10px -1px #521313;
 }
 
-.new-color div input{
+.new-color div.formWrapper .selected-color {
+  height: 25px;
+  width: 100%;
+  background: transparent;
+  text-align: center;
+  margin: 20px auto 0;
+}
+
+.new-color div.formWrapper input{
   min-width: 400px;
   padding: 15px;
   font-size: 18px;
@@ -29,7 +37,7 @@
   outline: none;
 }
 
-.new-color div button{
+.new-color div.formWrapper button{
   min-width: 240px;
   margin: 20px auto 0;
   padding: 15px 10px;
@@ -48,6 +56,7 @@
   box-shadow: none;
   padding: 0;
   box-shadow: none;
+  text-align: center;
 }
 
 .new-color .pending-tx span { 
@@ -66,7 +75,7 @@
 
 .lds-ellipsis div {
   position: absolute;
-  top: -11px;
+  top: 26px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
