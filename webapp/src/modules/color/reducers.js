@@ -26,12 +26,23 @@ function data(state = DATA_INITIAL_STATE, action) {
 
 function loading(state = false, action) {
   switch (action.type) {
-    case FETCH_COLORS.request:
-    case CREATE_COLOR.request: {
+    case FETCH_COLORS.request: {
       return true
     }
     case FETCH_COLORS.success:
-    case FETCH_COLORS.failure:
+    case FETCH_COLORS.failure: {
+      return false
+    }
+    default:
+      return state
+  }
+}
+
+function loadingTx(state = false, action) {
+  switch (action.type) {
+    case CREATE_COLOR.request: {
+      return true
+    }
     case CREATE_COLOR.success:
     case CREATE_COLOR.failure: {
       return false
@@ -56,4 +67,4 @@ function error(state = null, action) {
   }
 }
 
-export default combineReducers({ data, loading, error })
+export default combineReducers({ data, loading, loadingTx, error })

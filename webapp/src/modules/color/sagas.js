@@ -57,19 +57,19 @@ function* createColor({ payload }) {
     if (!from) {
       throw Error('Unlock, set Ropsten network or install Metamask')
     }
-    const jsonBlob = yield call(() =>
-      fetch('https://jsonblob.com/api/jsonBlob', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(metadata)
-      })
-    )
-    const uri = jsonBlob.headers.get('Location')
+    // const jsonBlob = yield call(() =>
+    //   fetch('https://jsonblob.com/api/jsonBlob', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=utf-8'
+    //     },
+    //     body: JSON.stringify(metadata)
+    //   })
+    // )
+    // const uri = jsonBlob.headers.get('Location')
     const { rainbow } = yield select(getContracts)
     const tx = yield call(() =>
-      rainbow.methods.addColor(color, uri).send({ from })
+      rainbow.methods.addColor(color, '').send({ from })
     )
 
     yield put(

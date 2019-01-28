@@ -1,11 +1,14 @@
 import { connect } from 'react-redux'
 
 import NewColor from './NewColor'
-import { getLoading } from '../../modules/color/selectors'
 import { createColorRequest } from '../../modules/color/actions'
+import { getLoading, getLoadingTx } from '../../modules/color/selectors'
+import { getAddress } from '../../modules/wallet/selectors'
 
 const mapState = state => ({
-  isLoading: getLoading(state)
+  isLoading: getLoading(state),
+  isLoadingTx: getLoadingTx(state),
+  address: getAddress(state)
 })
 
 const mapDispatch = dispatch => ({
